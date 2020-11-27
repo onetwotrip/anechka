@@ -358,10 +358,6 @@ async function updateChannelTopic(conversation, newTopic) {
     return false;
   }
   const localLog = bunyan.createLogger({name: `anechka:slack:${conversation}`});
-  const response = await slackBot.conversations.setTopic({
-    channel,
-    topic: newTopic,
-  });
   
   let response;
   try {
