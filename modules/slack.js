@@ -364,6 +364,16 @@ async function updateChannelTopic(conversation, newTopic) {
     channel,
     topic: newTopic,
   });
+  
+  let response;
+  try {
+    response = await slackBot.conversations.setTopic({
+      channel,
+      topic: newTopic,
+    });
+  } catch(e) {
+    localLog.info(`${channel} error`, e);
+  }  
 
   const updated = response && response.ok === true;
   localLog.info(`${channel} updated to ${newTopic}: ${updated}`);
