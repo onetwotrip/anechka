@@ -246,7 +246,9 @@ async function updateSlackTopicCacheData(timetable, devName) {
     await notify(warning, timetable);
     return false;
   }
-  const newTopic = topic.replace(foundUsers[devIndex], `<@${devId}>`);
+  let pos = 0;
+  // eslint-disable-next-line no-confusing-arrow
+  const newTopic = topic.replace(findUsers, (match) => (pos++ === devIndex) ? `<@${devId}>` : match);
   if (newTopic === topic) {
     localLog.info('current dev already set, nothing to do');
     return true;
