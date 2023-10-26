@@ -311,6 +311,12 @@ async function getDevName(timetable) {
   const users = caches.users[userTimeTableHash(timetable)];
   const commonLogPart = `for task "${name}" on conversation #${conversation}`;
 
+  if (!calendar) {
+    const warning = `There is no timetable at all ${commonLogPart}`;
+    localLog.warn(warning);
+    await notify(warning, timetable);
+    return false;
+  }
   if (!calendar[year]) {
     const warning = `There is no timetable for year ${year} ${commonLogPart}`;
     localLog.warn(warning);

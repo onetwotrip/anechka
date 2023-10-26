@@ -76,7 +76,7 @@ async function fetchTimetableData(timetable) {
     rows = res.data.values;
   } catch (err) {
     localLog.warn(`The API returned an error for timetable ${JSON.stringify(timetable)}: ${err}`);
-    throw err;
+    return false;
   }
   if (!rows || !rows.length) {
     localLog.warn('No data found.');
@@ -141,7 +141,7 @@ async function fetchTimetableUsers(timetable) {
     rows = res.data.values;
   } catch (err) {
     localLog.warn(`The API returned an error for timetable ${JSON.stringify(timetable)}: ${err}`);
-    throw err;
+    return false;
   }
   if (!rows || !rows.length) {
     localLog.warn('No data found.');
