@@ -202,7 +202,7 @@ async function fetchSlackUsers() {
  * @returns {Promise<boolean>}
  */
 async function updateSlackTopicCacheData(timetable, devName) {
-  const {conversation, name} = timetable;
+  const {conversation, name, notifyAnyway} = timetable;
   const localLog = bunyan.createLogger({name: `anechka:slack:${name}`});
   const devIndex = timetable.devIndex || 0;
   let topic;
@@ -249,7 +249,7 @@ async function updateSlackTopicCacheData(timetable, devName) {
   let pos = 0;
   // eslint-disable-next-line no-confusing-arrow
   const newTopic = topic.replace(findUsers, (match) => (pos++ === devIndex) ? `<@${devId}>` : match);
-  if (newTopic === topic) {
+  if (newTopic === topic && !notifyAnyway) {
     localLog.info('current dev already set, nothing to do');
     return true;
   }

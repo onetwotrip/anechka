@@ -6,7 +6,8 @@
       "updateTime": "17:54:30",
       "devIndex": 1,
       "conversation": "random",
-      "name": "jester on dity"
+      "name": "jester on dity",
+      "notifyAnyway": false
     },
     {
       "spreadsheetId": "yyy",
@@ -14,7 +15,8 @@
       "updateTime": "17:54:30",
       "devIndex": 0,
       "conversation": "general",
-      "name": "generic on duty"
+      "name": "generic on duty",
+      "notifyAnyway": false
     }
   ],
   "token": "zzz",
